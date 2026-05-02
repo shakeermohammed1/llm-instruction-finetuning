@@ -319,8 +319,9 @@ def main():
 
     model = AutoModelForCausalLM.from_pretrained(
         args.model_name,
-        torch_dtype=torch.bfloat16,
+        dtype=torch.bfloat16,
         attn_implementation="flash_attention_2" if torch.cuda.get_device_capability()[0] >= 8 else "eager",
+        use_safetensors=True,
     )
 
     # Enable gradient checkpointing to save activation memory
