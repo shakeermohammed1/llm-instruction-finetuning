@@ -1,5 +1,5 @@
 {
-    "_comment": "ZeRO Stage 2: Shard OPTIMIZER + GRADIENTS. Each GPU holds full params, but grads are reduce-scattered and optimizer states are partitioned.",
+    "_comment": "ZeRO Stage 2: Shard OPTIMIZER + GRADIENTS. Each GPU holds full params, but grads are reduce-scattered and optimizer states are partitioned. Optimizer offloaded to CPU to fit 7B model on 2x80GB GPUs.",
 
     "train_batch_size": 16,
     "train_micro_batch_size_per_gpu": 4,
@@ -11,7 +11,11 @@
         "reduce_scatter": true,
         "reduce_bucket_size": 5e8,
         "allgather_bucket_size": 5e8,
-        "contiguous_gradients": true
+        "contiguous_gradients": true,
+        "offload_optimizer": {
+            "device": "cpu",
+            "pin_memory": true
+        }
     },
 
     "optimizer": {
