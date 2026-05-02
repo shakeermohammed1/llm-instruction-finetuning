@@ -1,0 +1,19 @@
+# Training outputs (model weights, checkpoints, results)
+output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.egg
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# HuggingFace cache
+.cache/
